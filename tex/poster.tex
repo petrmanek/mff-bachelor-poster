@@ -1,0 +1,118 @@
+\documentclass[a0paper,portrait]{baposter}
+
+\usepackage{relsize}			% For \smaller.
+\usepackage[utf8]{inputenc}		% Use UTF-8.
+\usepackage{helvet}				% Use Helvetica as the sans-serif font.
+\usepackage{hyperref}			% Use hyperlinks for emails.
+
+%%% Global Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\graphicspath{{img/}}	% Root directory of the pictures 
+\tracingstats=2			% Enabled LaTeX logging with conditionals
+
+%%% Color Definitions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{bordercol}{RGB}{255,255,255}
+\definecolor{headercol1}{HTML}{FD2020}
+\definecolor{headercol2}{HTML}{F88A36}
+\definecolor{headerfontcol}{RGB}{255,255,255}
+\definecolor{boxcolor}{RGB}{255,255,255}
+\definecolor{bgcolor}{RGB}{255,255,255}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Utility functions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Save space in lists. Use this after the opening of the list %%%%%%%%%%%%%%%%
+\newcommand{\compresslist}{
+	\setlength{\itemsep}{1pt}
+	\setlength{\parskip}{0pt}
+	\setlength{\parsep}{0pt}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Document Start %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\typeout{Poster rendering started}
+
+%%% General Poster Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% Eye Catcher, Title, Authors and University Images %%%%%%%%%%%%%%%%%%%%%%
+\begin{poster}{
+	grid=false,
+	% Option is left on true though the eyecatcher is not used. The reason is
+	% that we have a bit nicer looking title and author formatting in the headercol
+	% this way
+	%eyecatcher=false, 
+	borderColor=bordercol,
+	headerColorOne=headercol1,
+	headerColorTwo=headercol2,
+	headerFontColor=headerfontcol,
+	% Only simple background color used, no shading, so boxColorTwo isn't necessary
+	boxColorOne=boxcolor,
+	%headershape=roundedright,
+	headerfont=\Large\bf\fontfamily{phv}\selectfont,
+	textborder=rectangle,
+	background=plain,
+	bgColorOne=bgcolor,
+	headerborder=open,
+	boxshade=plain,
+	linewidth=0.1pt
+}
+%%% Eye Cacther %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+	Eye Catcher, empty if option eyecatcher=false - unused
+}
+%%% Title %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\sf\bf
+	Genetic Programming in Swift\\
+	for Human-competitive Evolution
+}
+%%% Authors %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+	\vspace{1em} Petr Mánek (\href{mailto:petr.manek@me.com}{\texttt{petr.manek@me.com}}), supervisor: František Mráz\\
+	{\smaller Faculty of Mathematics and Physics, Charles University in Prague}
+}
+%%% Logo %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+	\includegraphics[width=8em,height=8em]{logo}
+}
+
+\begin{posterbox}[name=objectives,column=0]{Objectives}
+Text of Box 1
+\end{posterbox}
+
+\begin{posterbox}[name=intro-ga,column=0,below=objectives]{Genetic Algorithms}
+Text of Box 2a
+\end{posterbox}
+
+\begin{posterbox}[name=intro-swift,column=0,below=intro-ga]{Swift}
+Text of Box 2b
+\end{posterbox}
+
+\begin{posterbox}[name=arch,column=1]{Architecture}
+Text of Box 3
+\end{posterbox}
+
+\begin{posterbox}[name=props,column=1,below=arch]{Properties}
+Text of Box 4
+\end{posterbox}
+
+\begin{posterbox}[name=car,column=1,below=props]{Self-driving Car}
+Text of Box 5
+\end{posterbox}
+
+\begin{posterbox}[name=qwop,column=2]{QWOP Player}
+Text of Box 6
+\end{posterbox}
+
+\begin{posterbox}[name=conclusion,column=2,below=qwop]{Conclusion}
+Text of Box 7
+\end{posterbox}
+
+\begin{posterbox}[name=ref,column=2,below=conclusion]{References}
+Text of Box 8
+\end{posterbox}
+
+\end{poster}
+\end{document}
