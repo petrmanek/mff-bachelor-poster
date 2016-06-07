@@ -2,8 +2,8 @@
 
 \usepackage{relsize}			% For \smaller.
 \usepackage[utf8]{inputenc}		% Use UTF-8.
-\usepackage{helvet}				% Use Helvetica as the sans-serif font.
 \usepackage{hyperref}			% Use hyperlinks for emails.
+\usepackage{lipsum}
 
 %%% Global Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -12,12 +12,12 @@
 
 %%% Color Definitions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\definecolor{bordercol}{RGB}{255,255,255}
+\definecolor{bordercol}{HTML}{E4E4E4}
 \definecolor{headercol1}{HTML}{FD2020}
 \definecolor{headercol2}{HTML}{F88A36}
 \definecolor{headerfontcol}{RGB}{255,255,255}
-\definecolor{boxcolor}{RGB}{255,255,255}
-\definecolor{bgcolor}{RGB}{255,255,255}
+\definecolor{boxcolor}{HTML}{FFFFFF}
+\definecolor{bgcolor}{HTML}{F0F0F0}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Utility functions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -36,6 +36,13 @@
 \begin{document}
 \typeout{Poster rendering started}
 
+\background{
+	\begin{tikzpicture}[remember picture,overlay]
+		\fill[bgcolor] (-100,-100) rectangle (100,29.7);
+		\draw[bordercol] (-100,29.7) -- (100,29.7);
+	\end{tikzpicture}
+}
+
 %%% General Poster Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%% Eye Catcher, Title, Authors and University Images %%%%%%%%%%%%%%%%%%%%%%
 \begin{poster}{
@@ -45,73 +52,75 @@
 	% this way
 	%eyecatcher=false, 
 	borderColor=bordercol,
-	headerColorOne=headercol1,
+	headerColorOne=headercol2,
 	headerColorTwo=headercol2,
 	headerFontColor=headerfontcol,
+	colspacing=1.5em,
 	% Only simple background color used, no shading, so boxColorTwo isn't necessary
 	boxColorOne=boxcolor,
-	%headershape=roundedright,
-	headerfont=\Large\bf\fontfamily{phv}\selectfont,
+	headerfont=\Large\bf\fontfamily{lmss}\selectfont,
 	textborder=rectangle,
-	background=plain,
+	background=user,
 	bgColorOne=bgcolor,
 	headerborder=open,
+	headershape=rectangle,
 	boxshade=plain,
-	linewidth=0.1pt
+	linewidth=0.1pt,
+	headerheight=130pt
 }
 %%% Eye Cacther %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {
 	Eye Catcher, empty if option eyecatcher=false - unused
 }
 %%% Title %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{\sf\bf
+{\bf\fontfamily{lmss}\selectfont
 	Genetic Programming in Swift\\
 	for Human-competitive Evolution
 }
 %%% Authors %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {
-	\vspace{1em} Petr Mánek (\href{mailto:petr.manek@me.com}{\texttt{petr.manek@me.com}}), supervisor: František Mráz\\
+	\vspace{1em} Petr Mánek, supervisor: František Mráz\\
 	{\smaller Faculty of Mathematics and Physics, Charles University in Prague}
 }
 %%% Logo %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {
-	\includegraphics[width=8em,height=8em]{logo}
+	\includegraphics[width=9em,height=9em]{logo}
 }
 
 \begin{posterbox}[name=objectives,column=0]{Objectives}
-Text of Box 1
+\lipsum[1]
 \end{posterbox}
 
 \begin{posterbox}[name=intro-ga,column=0,below=objectives]{Genetic Algorithms}
-Text of Box 2a
+\lipsum[2]
 \end{posterbox}
 
 \begin{posterbox}[name=intro-swift,column=0,below=intro-ga]{Swift}
-Text of Box 2b
+\lipsum[3]
 \end{posterbox}
 
 \begin{posterbox}[name=arch,column=1]{Architecture}
-Text of Box 3
+\lipsum[4]
 \end{posterbox}
 
 \begin{posterbox}[name=props,column=1,below=arch]{Properties}
-Text of Box 4
+\lipsum[5]
 \end{posterbox}
 
 \begin{posterbox}[name=car,column=1,below=props]{Self-driving Car}
-Text of Box 5
+\lipsum[6]
 \end{posterbox}
 
 \begin{posterbox}[name=qwop,column=2]{QWOP Player}
-Text of Box 6
+\lipsum[7]
 \end{posterbox}
 
 \begin{posterbox}[name=conclusion,column=2,below=qwop]{Conclusion}
-Text of Box 7
+\lipsum[8]
 \end{posterbox}
 
 \begin{posterbox}[name=ref,column=2,below=conclusion]{References}
-Text of Box 8
+\lipsum[9]
 \end{posterbox}
 
 \end{poster}
