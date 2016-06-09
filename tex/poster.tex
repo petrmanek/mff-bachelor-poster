@@ -108,7 +108,60 @@
 \end{posterbox}
 
 \begin{posterbox}[name=intro-ga,column=0,below=objectives]{Genetic Algorithms}
-\lipsum[2]
+	Genetic algorithms (GA) are non-deterministic machine learning techniques inspired by natural processes. They have proven to be efficient solutions to some optimization and search problems in poorly-understood spaces. GA represent points of the domain space by individuals, which iteratively compete for their right to reproduce maximizing a set fitness function.
+
+	\begin{center}
+		\resizebox {\columnwidth} {!} {
+			\begin{tikzpicture}[
+				node distance = 2cm, 
+				auto,
+				decision/.style={
+					diamond, 
+					draw, 
+		    		text width=5em, 
+		    		text badly centered, 
+		    		node distance=2.3cm, 
+		    		inner sep=0pt
+		    		},
+				block/.style={
+					rectangle, 
+					draw, 
+					text width=6.5em, 
+					text centered, 
+					minimum height=4em
+					},
+				line/.style={
+					draw,
+					-latex'
+					}]
+			    % Place nodes
+			    \node [block] (init) {Generate random population.};
+			    \node [block, below of=init] (evaluate2) {Evaluate\\population.};
+			    \node [decision, below of=evaluate2] (termination) {Should terminate?};
+			    \node [block, below of=termination, node distance=3cm] (reset) {Reset\\offspring.};
+			    \node [block, right of=termination, node distance=3cm] (stop) {Terminate.};
+			    \node [decision, below of=reset] (enough) {Have enough offspring?};
+
+			    \node [block, below of=enough, node distance=3.3cm] (operator) {Choose genetic operator.};
+			    \node [block, left of=enough, node distance=3cm] (evaluate) {Evaluate\\offspring.};
+			    \node [block, above of=evaluate, node distance=3cm] (swap) {Swap\\generations.};
+			    \node [block, right of=operator, node distance=3cm] (insert) {Insert\\offspring\\ individual.};
+
+			    % Draw edges
+			    \path [line] (init) -- (evaluate2);
+			    \path [line] (evaluate2) -- (termination);
+			    \path [line] (termination) -- node [xshift=5pt] {no}(reset);
+			    \path [line] (reset) -- (enough);
+			    \path [line] (enough) -- node [xshift=5pt] {no}(operator);
+			    \path [line] (enough) -- node [xshift=3pt,yshift=10pt] {yes}(evaluate);
+			    \path [line] (evaluate) -- (swap);
+			    \path [line] (swap) |- (termination);
+			    \path [line] (termination) -- node [xshift=-2pt,yshift=3pt] {yes}(stop);
+			    \path [line] (operator) -- (insert);
+			    \path [line] (insert) |- (enough);
+			\end{tikzpicture}
+		}
+	\end{center}
 \end{posterbox}
 
 \begin{posterbox}[name=intro-swift,column=0,below=intro-ga]{Swift Programming Language}
@@ -116,9 +169,11 @@
 \end{posterbox}
 
 \begin{posterbox}[name=arch,column=1]{Architecture}
+	\todo
 \end{posterbox}
 
 \begin{posterbox}[name=props,column=1,below=arch]{Properties}
+	\todo
 \end{posterbox}
 
 \begin{posterbox}[name=car,column=1,below=props]{Self-driving Car Simulation}
