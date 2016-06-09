@@ -3,7 +3,15 @@
 \usepackage{relsize}			% For \smaller.
 \usepackage[utf8]{inputenc}		% Use UTF-8.
 \usepackage{hyperref}			% Use hyperlinks for emails.
+\usepackage{multirow}			% Use tables.
 \usepackage{lipsum}
+\usepackage{tikz} 				% Use TikZ drawing.
+\usepackage{pgfplots} 			% Use plots.
+\usepackage{amsmath}        % extensions for typesetting of math
+\usepackage{amsfonts}       % math fonts
+\usepackage{amsthm}         % theorems, definitions, etc.
+
+\usetikzlibrary{shapes,matrix,chains,positioning,decorations.pathreplacing,arrows,hobby,decorations.markings,backgrounds}       % more libs
 
 %%% Global Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -21,6 +29,9 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Utility functions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Delete this before production.
+\newcommand*{\todo}{\textbf{TODO}}
 
 %%% Save space in lists. Use this after the opening of the list %%%%%%%%%%%%%%%%
 \newcommand{\compresslist}{
@@ -109,13 +120,86 @@
 
 \begin{posterbox}[name=car,column=1,below=props]{Self-driving Car}
 \lipsum[6]
+\begin{center}
+\resizebox {\columnwidth} {!} {
+\begin{tikzpicture}[framed,background rectangle/.style={fill=black!60!green}]
+	\draw[
+	  black!10!white,
+	  line width=3mm,
+	  postaction={
+	    decorate,
+	    decoration={
+	      markings,
+	      mark=between positions 0 and 1 step 0.2 with
+	      {
+	        \node[transform shape] {\includegraphics[width=.5cm]{car}};
+	      }
+	    }
+	  }
+	]
+	(0,0) to[out angle=0,in angle=180,curve through={(1,.4) .. (5,0) .. (10,.5) .. (7,4.3) .. (3,4) .. (1,2)}] (0,0);
+\end{tikzpicture}
+}
+\end{center}
 \end{posterbox}
 
 \begin{posterbox}[name=qwop,column=2]{QWOP Player}
-\lipsum[7]
+QWOP is a popular online game, in which the player drives an athlete to finish a 100-meter sprint race as fast as possible. QWOP's difficulty is caused by its control scheme, which only allows the player to move the athlete by contracting individual muscle groups within his body. The challenge of the game is in that sense comparable to the problem of evolving bipedal gaits in physical robots.
+
+\vspace{0.5em}
+
+\parbox[c]{0.49\linewidth}{\includegraphics[width=\linewidth]{runner1}}
+\hfill
+\parbox[c]{0.49\linewidth}{\includegraphics[width=\linewidth]{runner2}}
+
+\vspace{0.5em}
+
+The presented library was used to partially replicate human-competitive results achieved by \todo. In every generation, 80 game strategies were generated and encoded as simple programs (genotype strings), then evaluated by the fitness function
+
+\vspace{-1.7em}
+
+\begin{align*}
+	f(d_1,d_2,\dots,d_n) = \frac{1}{100n} \sum_{i=1}^n d_i
+\end{align*}
+
+\vspace{-0.5em}
+
+where $d_1,d_2,\dots,d_n$ are the distances achieved in $n$ trial 30-second runs. The best strategy after 38 generations was able to complete the race in approximately 152 seconds.
+
+\vspace{-1.4em}
+
+\begin{center}
+\resizebox {\columnwidth} {!} {
+\begin{tikzpicture}
+	\begin{axis}[
+		height=5cm,
+		width=9cm,
+		grid=major,
+		xlabel={Generation},
+		ymin=0, ymax=0.3,
+		xmin=1, xmax=38,
+		no markers,
+		legend style={legend pos=north west,font=\footnotesize},
+		ytick={0,0.1,0.2,...,0.3},
+        yticklabel style={font=\tiny,xshift=-0.4ex},
+        xticklabel style={font=\tiny,yshift=-0.5ex},
+        xlabel near ticks,
+        xlabel style={font=\footnotesize,xshift=0.5ex}
+	]
+		
+	\addplot table {data/qwop-fitness-best.dat};
+	\addlegendentry{Best fitness}
+
+	\addplot table {data/qwop-fitness-average.dat};
+	\addlegendentry{Average fitness}
+
+	\end{axis}
+\end{tikzpicture}
+}
+\end{center}
 \end{posterbox}
 
-\begin{posterbox}[name=conclusion,column=2,below=qwop]{Conclusion}
+\begin{posterbox}[name=conclusion,column=2,below=qwop]{Conclusions}
 \lipsum[8]
 \end{posterbox}
 
