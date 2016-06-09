@@ -116,17 +116,18 @@
 \end{posterbox}
 
 \begin{posterbox}[name=arch,column=1]{Architecture}
-\lipsum[4]
 \end{posterbox}
 
 \begin{posterbox}[name=props,column=1,below=arch]{Properties}
-\lipsum[5]
 \end{posterbox}
 
-\begin{posterbox}[name=car,column=1,below=props]{Self-driving Car}
-	\lipsum[6]
-	\begin{center}
-		\resizebox {\columnwidth} {!} {
+\begin{posterbox}[name=car,column=1,below=props]{Self-driving Car Simulation}
+	The presented library was used to evolve a control program for a self-driving car. The environment assumed Newtonian physics model (ignoring friction forces) and the parameters of the experimental car were modelled to match a real vehicle. The road was a randomly generated closed Bézier curve, which was detectable by 5 sensors positioned in the front, middle and the back of the car (see the picture below).
+
+	\vspace{0.5em}
+
+	\parbox[c]{0.34\linewidth}{
+		\resizebox{!} {3.2cm} {
 			\begin{tikzpicture}[framed,background rectangle/.style={fill=black!60!green}]
 				\draw[
 				  black!10!white,
@@ -145,10 +146,66 @@
 				(0,0) to[out angle=0,in angle=180,curve through={(1,.4) .. (5,0) .. (10,.5) .. (7,4.3) .. (3,4) .. (1,2)}] (0,0);
 			\end{tikzpicture}
 		}
+	}
+	\hfill
+	\parbox[c]{0.24\linewidth}{
+		\resizebox{!} {3.2cm} {
+			\begin{tikzpicture}[detector/.style={draw,fill=yellow!70!white,minimum size=0.4cm,font=\bf}]
+				\node[anchor=south west,inner sep=0,rotate=90] at (0,0) {\includegraphics[width=2.8cm]{car}};
+				\node[detector] at (-2,3.2) {1};
+				\node[detector] at (-1.4,3.2) {2};
+				\node[detector] at (-0.8,3.2) {3};
+				\node[detector] at (-1.4,1.1) {4};
+				\node[detector] at (-1.4,-0.7) {5};
+			\end{tikzpicture}
+		}
+	}
+
+	\vspace{0.5em}
+
+	The car was controlled by a 3-layer feedforward neural network with 10 neurons in the hidden layer, whose connection weights were encoded in the genotype. Every program was evaluated in 5 independent 1-hour simulations, which tracked the total distance driven over the road. The fitness function was defined as
+
+	\vspace{-1.7em}
+
+	\begin{align*}
+		f(\hat{d}_1,\hat{d}_2,\dots,\hat{d}_5) = \frac{1}{5 d_{max}} \sum_{i=1}^5 \hat{d}_i
+	\end{align*}
+
+	\vspace{-0.5em}
+
+	where $\hat{d}_1,\hat{d}_2,\dots,\hat{d}_5$ denote the total distances driven over the road in the individual simulations and $d_{max}$ denotes the maximum achievable distance given the simulation parameters. The best control program after 100 generations was able to stay on the road in approximately 70\% of simulations.
+	\vspace{-1.4em}
+
+	\begin{center}
+		\resizebox {\columnwidth} {!} {
+			\begin{tikzpicture}
+				\begin{axis}[
+					height=6cm,
+					width=9cm,
+					grid=major,
+					xlabel={Generation},
+					ymin=0, ymax=1,
+					xmin=1, xmax=100,
+					no markers,
+					legend style={legend pos=south east,font=\small},
+			        yticklabel style={font=\small,xshift=-0.4ex},
+			        xticklabel style={font=\small,yshift=-0.5ex},
+			        xlabel style={font=\small,xshift=1.0ex}
+				]
+			
+				\addplot table {data/car-fitness-best.dat};
+				\addlegendentry{Best fitness}
+
+				\addplot table {data/car-fitness-average.dat};
+				\addlegendentry{Average fitness}
+
+				\end{axis}
+			\end{tikzpicture}
+		}
 	\end{center}
 \end{posterbox}
 
-	\begin{posterbox}[name=qwop,column=2]{QWOP Player}
+\begin{posterbox}[name=qwop,column=2]{QWOP Player}
 	QWOP is a popular online game, in which the player drives an athlete to finish a 100-meter sprint race as fast as possible. QWOP's difficulty is caused by its control scheme, which only allows the player to move the athlete by contracting individual muscle groups within his body. The challenge of the game is in that sense comparable to the problem of evolving bipedal gaits in physical robots.
 
 	\vspace{0.5em}
@@ -169,7 +226,7 @@
 
 	\vspace{-0.5em}
 
-	where $d_1,d_2,\dots,d_n$ are the distances achieved in $n$ trial 30-second runs. The best strategy after 38 generations was able to complete the race in approximately 152 seconds.
+	where $d_1,d_2,\dots,d_n$ denote the distances achieved in $n$ trial 30-second runs. The best strategy after 38 generations was able to complete the race in approximately 152 seconds.
 
 	\vspace{-1.4em}
 
