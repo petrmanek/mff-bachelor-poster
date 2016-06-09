@@ -10,6 +10,7 @@
 \usepackage{amsmath}        % extensions for typesetting of math
 \usepackage{amsfonts}       % math fonts
 \usepackage{amsthm}         % theorems, definitions, etc.
+\usepackage{enumitem}         % remove list indent
 
 \usetikzlibrary{shapes,matrix,chains,positioning,decorations.pathreplacing,arrows,hobby,decorations.markings,backgrounds}       % more libs
 
@@ -99,7 +100,11 @@
 }
 
 \begin{posterbox}[name=objectives,column=0]{Objectives}
-\lipsum[1]
+	\begin{enumerate}[leftmargin=*]
+		\compresslist
+		\item Implement a genetic programming library in the Swift programming language.
+		\item Demonstrate the usage of the library by applying it to sample problems.
+	\end{enumerate}
 \end{posterbox}
 
 \begin{posterbox}[name=intro-ga,column=0,below=objectives]{Genetic Algorithms}
@@ -154,7 +159,7 @@ QWOP is a popular online game, in which the player drives an athlete to finish a
 
 \vspace{0.5em}
 
-The presented library was used to partially replicate human-competitive results achieved by \todo. In every generation, 80 game strategies were generated and encoded as simple programs (genotype strings), then evaluated by the fitness function
+The presented library was used to evolve an artificial QWOP player and partially replicate human-competitive results achieved by \todo. In every generation, 80 game strategies were generated and encoded as simple programs (genotype strings), then evaluated by the fitness function
 
 \vspace{-1.7em}
 
@@ -179,12 +184,12 @@ where $d_1,d_2,\dots,d_n$ are the distances achieved in $n$ trial 30-second runs
 		ymin=0, ymax=0.3,
 		xmin=1, xmax=38,
 		no markers,
-		legend style={legend pos=north west,font=\footnotesize},
+		legend style={legend pos=north west,font=\small},
+		xtick={0,5,10,15,20,25,30,35,38},
 		ytick={0,0.1,0.2,...,0.3},
-        yticklabel style={font=\tiny,xshift=-0.4ex},
-        xticklabel style={font=\tiny,yshift=-0.5ex},
-        xlabel near ticks,
-        xlabel style={font=\footnotesize,xshift=0.5ex}
+        yticklabel style={font=\small,xshift=-0.4ex},
+        xticklabel style={font=\small,yshift=-0.5ex},
+        xlabel style={font=\small,xshift=1.0ex}
 	]
 		
 	\addplot table {data/qwop-fitness-best.dat};
