@@ -111,8 +111,8 @@
 \lipsum[2]
 \end{posterbox}
 
-\begin{posterbox}[name=intro-swift,column=0,below=intro-ga]{Swift}
-\lipsum[3]
+\begin{posterbox}[name=intro-swift,column=0,below=intro-ga]{Swift Programming Language}
+	The Swift programming language has been unveiled in 2014 by the Apple Corporation. Since then, it has been widely adopted by software developers and computer engineers, succeeding Objective-C as the main programming language used for application development on the Apple mobile device platform. Building on proven coding paradigms, such as generics and strongly-typed objects, Swift strives to be a modern, concise and safe alternative to popular languages like Python or C++ while attempting to maintain comparable performance in terms of computational speed and memory management.
 \end{posterbox}
 
 \begin{posterbox}[name=arch,column=1]{Architecture}
@@ -124,84 +124,84 @@
 \end{posterbox}
 
 \begin{posterbox}[name=car,column=1,below=props]{Self-driving Car}
-\lipsum[6]
-\begin{center}
-\resizebox {\columnwidth} {!} {
-\begin{tikzpicture}[framed,background rectangle/.style={fill=black!60!green}]
-	\draw[
-	  black!10!white,
-	  line width=3mm,
-	  postaction={
-	    decorate,
-	    decoration={
-	      markings,
-	      mark=between positions 0 and 1 step 0.2 with
-	      {
-	        \node[transform shape] {\includegraphics[width=.5cm]{car}};
-	      }
-	    }
-	  }
-	]
-	(0,0) to[out angle=0,in angle=180,curve through={(1,.4) .. (5,0) .. (10,.5) .. (7,4.3) .. (3,4) .. (1,2)}] (0,0);
-\end{tikzpicture}
-}
-\end{center}
+	\lipsum[6]
+	\begin{center}
+		\resizebox {\columnwidth} {!} {
+			\begin{tikzpicture}[framed,background rectangle/.style={fill=black!60!green}]
+				\draw[
+				  black!10!white,
+				  line width=3mm,
+				  postaction={
+				    decorate,
+				    decoration={
+				      markings,
+				      mark=between positions 0 and 1 step 0.2 with
+				      {
+				        \node[transform shape] {\includegraphics[width=.5cm]{car}};
+				      }
+				    }
+				  }
+				]
+				(0,0) to[out angle=0,in angle=180,curve through={(1,.4) .. (5,0) .. (10,.5) .. (7,4.3) .. (3,4) .. (1,2)}] (0,0);
+			\end{tikzpicture}
+		}
+	\end{center}
 \end{posterbox}
 
-\begin{posterbox}[name=qwop,column=2]{QWOP Player}
-QWOP is a popular online game, in which the player drives an athlete to finish a 100-meter sprint race as fast as possible. QWOP's difficulty is caused by its control scheme, which only allows the player to move the athlete by contracting individual muscle groups within his body. The challenge of the game is in that sense comparable to the problem of evolving bipedal gaits in physical robots.
+	\begin{posterbox}[name=qwop,column=2]{QWOP Player}
+	QWOP is a popular online game, in which the player drives an athlete to finish a 100-meter sprint race as fast as possible. QWOP's difficulty is caused by its control scheme, which only allows the player to move the athlete by contracting individual muscle groups within his body. The challenge of the game is in that sense comparable to the problem of evolving bipedal gaits in physical robots.
 
-\vspace{0.5em}
+	\vspace{0.5em}
 
-\parbox[c]{0.49\linewidth}{\includegraphics[width=\linewidth]{runner1}}
-\hfill
-\parbox[c]{0.49\linewidth}{\includegraphics[width=\linewidth]{runner2}}
+	\parbox[c]{0.49\linewidth}{\includegraphics[width=\linewidth]{runner1}}
+	\hfill
+	\parbox[c]{0.49\linewidth}{\includegraphics[width=\linewidth]{runner2}}
 
-\vspace{0.5em}
+	\vspace{0.5em}
 
-The presented library was used to evolve an artificial QWOP player and partially replicate human-competitive results achieved by \todo. In every generation, 80 game strategies were generated and encoded as simple programs (genotype strings), then evaluated by the fitness function
+	The presented library was used to evolve an artificial QWOP player and partially replicate human-competitive results achieved by \todo. In every generation, 80 game strategies were generated and encoded as simple programs (genotype strings), then evaluated by the fitness function
 
-\vspace{-1.7em}
+	\vspace{-1.7em}
 
-\begin{align*}
-	f(d_1,d_2,\dots,d_n) = \frac{1}{100n} \sum_{i=1}^n d_i
-\end{align*}
+	\begin{align*}
+		f(d_1,d_2,\dots,d_n) = \frac{1}{100n} \sum_{i=1}^n d_i
+	\end{align*}
 
-\vspace{-0.5em}
+	\vspace{-0.5em}
 
-where $d_1,d_2,\dots,d_n$ are the distances achieved in $n$ trial 30-second runs. The best strategy after 38 generations was able to complete the race in approximately 152 seconds.
+	where $d_1,d_2,\dots,d_n$ are the distances achieved in $n$ trial 30-second runs. The best strategy after 38 generations was able to complete the race in approximately 152 seconds.
 
-\vspace{-1.4em}
+	\vspace{-1.4em}
 
-\begin{center}
-\resizebox {\columnwidth} {!} {
-\begin{tikzpicture}
-	\begin{axis}[
-		height=5cm,
-		width=9cm,
-		grid=major,
-		xlabel={Generation},
-		ymin=0, ymax=0.3,
-		xmin=1, xmax=38,
-		no markers,
-		legend style={legend pos=north west,font=\small},
-		xtick={0,5,10,15,20,25,30,35,38},
-		ytick={0,0.1,0.2,...,0.3},
-        yticklabel style={font=\small,xshift=-0.4ex},
-        xticklabel style={font=\small,yshift=-0.5ex},
-        xlabel style={font=\small,xshift=1.0ex}
-	]
-		
-	\addplot table {data/qwop-fitness-best.dat};
-	\addlegendentry{Best fitness}
+	\begin{center}
+		\resizebox {\columnwidth} {!} {
+			\begin{tikzpicture}
+				\begin{axis}[
+					height=5cm,
+					width=9cm,
+					grid=major,
+					xlabel={Generation},
+					ymin=0, ymax=0.3,
+					xmin=1, xmax=38,
+					no markers,
+					legend style={legend pos=north west,font=\small},
+					xtick={0,5,10,15,20,25,30,35,38},
+					ytick={0,0.1,0.2,...,0.3},
+			        yticklabel style={font=\small,xshift=-0.4ex},
+			        xticklabel style={font=\small,yshift=-0.5ex},
+			        xlabel style={font=\small,xshift=1.0ex}
+				]
+					
+				\addplot table {data/qwop-fitness-best.dat};
+				\addlegendentry{Best fitness}
 
-	\addplot table {data/qwop-fitness-average.dat};
-	\addlegendentry{Average fitness}
+				\addplot table {data/qwop-fitness-average.dat};
+				\addlegendentry{Average fitness}
 
-	\end{axis}
-\end{tikzpicture}
-}
-\end{center}
+				\end{axis}
+			\end{tikzpicture}
+		}
+	\end{center}
 \end{posterbox}
 
 \begin{posterbox}[name=conclusion,column=2,below=qwop]{Conclusions}
