@@ -1,31 +1,31 @@
 \begin{thebibliography}{1}
 
-\bibitem{CatmullRomSplines}
-{\sc Catmull, E., and Rom, R.}
-\newblock A class of local interpolating splines.
-\newblock {\em Computer aided geometric design 74\/} (1974), 317--326.
-
-\bibitem{QwopWebsite}
-{\sc Foddy, B.}
-\newblock {QWOP}.
-\newblock \url{http://www.foddy.net/Athletics.html}, 2016.
-\newblock [Online; accessed 11-March-2016].
-
 \bibitem{Koza1992}
-{\sc {K}oza, J.~R.}
+{J}ohn~{R}. {K}oza.
 \newblock {\em {G}enetic {P}rogramming: On the Programming of Computers by
   Means of Natural Selection}.
 \newblock {MIT} {P}ress, Cambridge, {MA}, {USA}, 1992.
 
 \bibitem{MelkmanConvexHull}
-{\sc Melkman, A.~A.}
+Avraham~A. Melkman.
 \newblock On-line construction of the convex hull of a simple polyline.
-\newblock {\em Inf. Process. Lett. 25}, 1 (Apr. 1987), 11--12.
+\newblock {\em Inf. Process. Lett.}, 25(1):11--12, April 1987.
+
+\bibitem{CatmullRomSplines}
+Edwin Catmull and Raphael Rom.
+\newblock A class of local interpolating splines.
+\newblock {\em Computer aided geometric design}, 74:317--326, 1974.
+
+\bibitem{QwopWebsite}
+B.~Foddy.
+\newblock {QWOP}.
+\newblock \url{http://www.foddy.net/Athletics.html}, 2016.
+\newblock [Online; accessed 11-March-2016].
 
 \bibitem{EvolvingQwopGaits}
-{\sc Ray, S., Gordon, V.~S., and Vaucher, L.}
+Steven Ray, Vahl~Scott Gordon, and Laurent Vaucher.
 \newblock Evolving {QWOP} gaits.
 \newblock In {\em GECCO '14 Proceedings of the 2014 conference on Genetic and
-  evolutionary computation\/} (Vancouver, 2014), pp.~823--830.
+  evolutionary computation}, pages 823--830, Vancouver, 2014.
 
 \end{thebibliography}

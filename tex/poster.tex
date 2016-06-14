@@ -7,10 +7,11 @@
 \usepackage{lipsum}
 \usepackage{tikz} 				% Use TikZ drawing.
 \usepackage{pgfplots} 			% Use plots.
-\usepackage{amsmath}        % extensions for typesetting of math
-\usepackage{amsfonts}       % math fonts
-\usepackage{amsthm}         % theorems, definitions, etc.
-\usepackage{enumitem}         % remove list indent
+\usepackage{amsmath}            % extensions for typesetting of math
+\usepackage{amsfonts}           % math fonts
+\usepackage{amsthm}             % theorems, definitions, etc.
+\usepackage{enumitem}           % remove list indent
+\usepackage{cite}               % multiple citations
 
 \usetikzlibrary{shapes,matrix,chains,positioning,decorations.pathreplacing,arrows,hobby,decorations.markings,backgrounds}       % more libs
 
@@ -108,7 +109,7 @@
 \end{posterbox}
 
 \begin{posterbox}[name=intro-ga,column=0,below=objectives]{Genetic Algorithms}
-	Genetic algorithms \cite{Koza1992} are randomized machine learning techniques inspired by natural processes. They have proven to be efficient solutions to some optimization and search problems, especially in cases where the domain space is poorly understood, unpredictable or irregular.
+	Genetic algorithms \cite{Koza1992} are randomized machine learning techniques, inspired by natural processes. They have proven to be efficient solutions to some optimization and search problems, especially in cases where the domain space is poorly understood, unpredictable or irregular.
 
 	\vspace{-1em}
 
@@ -173,7 +174,7 @@
 \end{posterbox}
 
 \begin{posterbox}[name=arch,column=1]{Architecture}
-	The architecture of the presented library is based on generics and object polymorphism. Its individual components define and reference generic protocols (Swift interfaces) to allow for variability and user customization. In addition, the presented library provides implementation of commonly used features.
+	The architecture of the presented library is based on generics and object polymorphism. Its individual components define and reference generic protocols (Swift interfaces) to allow for variability and user customization. In addition, the presented library provides an implementation of commonly used features.
 
 	\vspace{-0.5em}
 
@@ -190,7 +191,7 @@
 \end{posterbox}
 
 \begin{posterbox}[name=car,column=1,below=arch]{Self-driving Car Simulation}
-	The presented library was used to evolve a control program for a self-driving car. The environment assumed Newtonian physics model (ignoring friction forces) and the parameters of the experimental car were modeled to match a real vehicle. The road was a randomly generated \cite{MelkmanConvexHull} \cite{CatmullRomSplines} closed Bézier curve, which was detectable by 5 sensors positioned in the front, middle and the back of the car (see the picture below).
+	The presented library was used to evolve a control program for a self-driving car. The environment assumed Newtonian physics model (ignoring friction) and the parameters of the experimental car were modeled to match a real vehicle. The road was a randomly generated \cite{MelkmanConvexHull,CatmullRomSplines} closed Bézier curve, which was detectable by 5 sensors positioned in the front, middle and the back of the car (see the picture below).
 
 	\vspace{0.5em}
 
@@ -236,7 +237,7 @@
 	\vspace{-1.7em}
 
 	\begin{align*}
-		f(\hat{d}_1,\hat{d}_2,\dots,\hat{d}_5) = \frac{1}{5 d_{max}} \sum_{i=1}^5 \hat{d}_i
+		f(\hat{d}_1,\hat{d}_2,\dots,\hat{d}_5) = \frac{1}{5\,d_{max}} \sum_{i=1}^5 \hat{d}_i
 	\end{align*}
 
 	\vspace{-0.5em}
@@ -278,7 +279,7 @@
 \end{posterbox}
 
 \begin{posterbox}[name=qwop,column=2]{QWOP Player}
-	QWOP \cite{QwopWebsite} is a popular online game, in which the player drives an athlete to finish a 100-meter sprint race as fast as possible. QWOP's difficulty is caused by its control scheme, which only allows the player to move the athlete by contracting individual muscle groups within his body. The challenge of the game is in that sense comparable to the problem of evolving bipedal gaits in physical robots.
+	QWOP \cite{QwopWebsite} is a popular online game, in which the player drives an athlete to finish a 100-meter sprint race as fast as possible. QWOP's difficulty is caused by its control scheme, which only allows the player to move the athlete by contracting individual muscle groups within his body. The challenge of the game is comparable to the problem of evolving bipedal gaits in physical robots.
 
 	\vspace{0.5em}
 
@@ -288,7 +289,7 @@
 
 	\vspace{0.5em}
 
-	The presented library was used to evolve an artificial QWOP player and partially replicate human-competitive results achieved in \cite{EvolvingQwopGaits}. In every generation, 80 game strategies were generated and encoded as simple programs (genotype strings), then evaluated by the fitness function
+	The presented library was used to evolve an artificial QWOP player and partially replicate the human-competitive results achieved in \cite{EvolvingQwopGaits}. In every generation, 80 game strategies were generated and encoded as simple programs (genotype strings), then evaluated by the fitness function
 
 	\vspace{-1.7em}
 
@@ -298,7 +299,7 @@
 
 	\vspace{-0.5em}
 
-	where $d_1,d_2,\dots,d_n$ denote the distances achieved in $n$ trial 30-second runs. The best strategy after 38 generations was able to complete the race in approximately 152 seconds.
+	where $d_1,d_2,\dots,d_n$ denote the distances in $n$ trial 30-second runs. The best strategy after 38 generations was able to complete the race in approximately 152 seconds.
 
 	\vspace{-1.4em}
 
@@ -310,12 +311,12 @@
 					width=9cm,
 					grid=major,
 					xlabel={Generation},
-					ymin=0, ymax=0.3,
+					ymin=0, ymax=0.4,
 					xmin=1, xmax=38,
 					no markers,
 					legend style={legend pos=north west,font=\small},
 					xtick={0,5,10,15,20,25,30,35,38},
-					ytick={0,0.1,0.2,...,0.3},
+					ytick={0,0.1,0.2,0.3,0.4},
 			        yticklabel style={font=\small,xshift=-0.4ex},
 			        xticklabel style={font=\small,yshift=-0.5ex},
 			        xlabel style={font=\small,xshift=1.0ex}
@@ -336,7 +337,7 @@
 \begin{posterbox}[name=conclusion,column=2,below=qwop]{Conclusions}
 	This thesis has managed to satisfy all of its objectives. The presented library is available online as an open-source project and has many potential applications. It is compatible with Apple and Linux operating systems.
 
-	\vspace{2em}
+	\vspace{1em}
 
 	\hfill See: \href{https://github.com/petrmanek/Revolver}{\texttt{github.com/petrmanek/Revolver}}
 \end{posterbox}
@@ -344,7 +345,7 @@
 \begin{posterbox}[name=ref,column=2,below=conclusion,bottomaligned=car]{References}
 	\smaller
      
-     \bibliographystyle{acm}
+     \bibliographystyle{unsrt}
      \renewcommand{\section}[2]{\vskip 0.05em}
      \bibliography{bibliography}
 \end{posterbox}
