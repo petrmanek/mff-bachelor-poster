@@ -102,13 +102,15 @@
 \begin{posterbox}[name=objectives,column=0]{Objectives}
 	\begin{enumerate}[leftmargin=*]
 		\compresslist
-		\item Implement a genetic programming library in the Swift programming language.
+		\item Implement a genetic programming library in the Swift Programming Language.
 		\item Demonstrate the usage of the library by applying it to sample problems.
 	\end{enumerate}
 \end{posterbox}
 
 \begin{posterbox}[name=intro-ga,column=0,below=objectives]{Genetic Algorithms}
-	Genetic algorithms (GA) are non-deterministic machine learning techniques inspired by natural processes. They have proven to be efficient solutions to some optimization and search problems in poorly-understood spaces. GA represent points of the domain space by individuals, which iteratively compete for their right to reproduce maximizing a set fitness function.
+	Genetic algorithms \cite{Koza1992} are randomized machine learning techniques inspired by natural processes. They have proven to be efficient solutions to some optimization and search problems, especially in cases where the domain space is poorly understood, unpredictable or irregular.
+
+	\vspace{-1em}
 
 	\begin{center}
 		\resizebox {\columnwidth} {!} {
@@ -121,14 +123,16 @@
 		    		text width=5em, 
 		    		text badly centered, 
 		    		node distance=2.3cm, 
-		    		inner sep=0pt
+		    		inner sep=0pt,
+		    		fill=black!6!white
 		    		},
 				block/.style={
 					rectangle, 
 					draw, 
 					text width=6.5em, 
 					text centered, 
-					minimum height=4em
+					minimum height=4em,
+		    		fill=black!6!white
 					},
 				line/.style={
 					draw,
@@ -162,22 +166,31 @@
 			\end{tikzpicture}
 		}
 	\end{center}
-\end{posterbox}
 
-\begin{posterbox}[name=intro-swift,column=0,below=intro-ga]{Swift Programming Language}
-	The Swift programming language has been unveiled in 2014 by the Apple Corporation. Since then, it has been widely adopted by software developers and computer engineers, succeeding Objective-C as the main programming language used for application development on the Apple mobile device platform. Building on proven coding paradigms, such as generics and strongly-typed objects, Swift strives to be a modern, concise and safe alternative to popular languages like Python or C++ while attempting to maintain comparable performance in terms of computational speed and memory management.
+	\vspace{-0.5em}
+
+	Genetic algorithms represent domain points as biological individuals which compete for their right to reproduce, while maximizing a set fitness function. In generations, individuals are then non-deterministically selected and combined to iteratively improve their quality.
 \end{posterbox}
 
 \begin{posterbox}[name=arch,column=1]{Architecture}
-	\todo
+	The architecture of the presented library is based on generics and object polymorphism. Its individual components define and reference generic protocols (Swift interfaces) to allow for variability and user customization. In addition, the presented library provides implementation of commonly used features.
+
+	\vspace{-0.5em}
+
+	\begin{description}
+		\compresslist
+		\item[Chromosomes (Genotypes):] String, Tree
+		\item[Operators:] Reproduction, Mutation, 1-point \& 2-point Crossover, Elitism
+		\item[Selection Methods:] Rank, Roulette, Tournament, Best \& Worst, Random
+		\item[Termination Conditions:] Number of Generations, Fitness Threshold, Date
+		\item[Evaluators:] Sequential, Parallel, Cyclic
+		\item[Miscellaneous:] Object Persistence, Random Generators, Tree Interpretation
+	\end{description}
+
 \end{posterbox}
 
-\begin{posterbox}[name=props,column=1,below=arch]{Properties}
-	\todo
-\end{posterbox}
-
-\begin{posterbox}[name=car,column=1,below=props]{Self-driving Car Simulation}
-	The presented library was used to evolve a control program for a self-driving car. The environment assumed Newtonian physics model (ignoring friction forces) and the parameters of the experimental car were modelled to match a real vehicle. The road was a randomly generated closed Bézier curve, which was detectable by 5 sensors positioned in the front, middle and the back of the car (see the picture below).
+\begin{posterbox}[name=car,column=1,below=arch]{Self-driving Car Simulation}
+	The presented library was used to evolve a control program for a self-driving car. The environment assumed Newtonian physics model (ignoring friction forces) and the parameters of the experimental car were modeled to match a real vehicle. The road was a randomly generated \cite{MelkmanConvexHull} \cite{CatmullRomSplines} closed Bézier curve, which was detectable by 5 sensors positioned in the front, middle and the back of the car (see the picture below).
 
 	\vspace{0.5em}
 
@@ -260,8 +273,12 @@
 	\end{center}
 \end{posterbox}
 
+\begin{posterbox}[name=intro-swift,column=0,below=intro-ga,bottomaligned=car]{Swift Programming Language}
+	The Swift Programming Language has been unveiled in 2014 by the Apple Corporation. Since then, it has been widely adopted by software developers and computer engineers, succeeding Objective-C as the main programming language used for application development on the Apple mobile device platform. Building on proven coding paradigms, such as generics and strongly-typed objects, Swift strives to be a modern, concise and safe alternative to popular languages like Python or C++ while attempting to maintain comparable performance in terms of computational speed and memory management.
+\end{posterbox}
+
 \begin{posterbox}[name=qwop,column=2]{QWOP Player}
-	QWOP is a popular online game, in which the player drives an athlete to finish a 100-meter sprint race as fast as possible. QWOP's difficulty is caused by its control scheme, which only allows the player to move the athlete by contracting individual muscle groups within his body. The challenge of the game is in that sense comparable to the problem of evolving bipedal gaits in physical robots.
+	QWOP \cite{QwopWebsite} is a popular online game, in which the player drives an athlete to finish a 100-meter sprint race as fast as possible. QWOP's difficulty is caused by its control scheme, which only allows the player to move the athlete by contracting individual muscle groups within his body. The challenge of the game is in that sense comparable to the problem of evolving bipedal gaits in physical robots.
 
 	\vspace{0.5em}
 
@@ -271,7 +288,7 @@
 
 	\vspace{0.5em}
 
-	The presented library was used to evolve an artificial QWOP player and partially replicate human-competitive results achieved by \todo. In every generation, 80 game strategies were generated and encoded as simple programs (genotype strings), then evaluated by the fitness function
+	The presented library was used to evolve an artificial QWOP player and partially replicate human-competitive results achieved in \cite{EvolvingQwopGaits}. In every generation, 80 game strategies were generated and encoded as simple programs (genotype strings), then evaluated by the fitness function
 
 	\vspace{-1.7em}
 
@@ -317,11 +334,19 @@
 \end{posterbox}
 
 \begin{posterbox}[name=conclusion,column=2,below=qwop]{Conclusions}
-	This thesis has managed to satisfy all of its objectives. The presented library is available online as an open-source project and has many potential applications.
+	This thesis has managed to satisfy all of its objectives. The presented library is available online as an open-source project and has many potential applications. It is compatible with Apple and Linux operating systems.
+
+	\vspace{2em}
+
+	\hfill See: \href{https://github.com/petrmanek/Revolver}{\texttt{github.com/petrmanek/Revolver}}
 \end{posterbox}
 
-\begin{posterbox}[name=ref,column=2,below=conclusion]{References}
-	\todo
+\begin{posterbox}[name=ref,column=2,below=conclusion,bottomaligned=car]{References}
+	\smaller
+     
+     \bibliographystyle{acm}
+     \renewcommand{\section}[2]{\vskip 0.05em}
+     \bibliography{bibliography}
 \end{posterbox}
 
 \end{poster}
